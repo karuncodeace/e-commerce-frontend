@@ -13,7 +13,7 @@ export default function Header() {
 
         <HeaderSearchBar />
 
-        <div className="">
+        <div className="ml-auto shrink-0">
           <Navlinks />
         </div>
       </div>

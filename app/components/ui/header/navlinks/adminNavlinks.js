@@ -1,37 +1,59 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { User, Package, ClipboardList, LayoutGrid } from "lucide-react";
 
 export const adminNavlinks = [
-    {
-        name: "Admin Profile",
-        href: "/admin/profile",
-    },
-    {
-        name: "Admin Products",
-        href: "/admin/products",
-    },
-    {
-        name :"Manage Orders",
-        href: "/admin/orders",
-    },
-    {
-        name :"Manage Categories",
-        href: "/admin/categories",
-    }
-    
-]
-
+  {
+    name: "Admin Profile",
+    href: "/admin/profile",
+    icon: User,
+  },
+  {
+    name: "Admin Products",
+    href: "/admin/products",
+    icon: Package,
+  },
+  {
+    name: "Manage Orders",
+    href: "/admin/orders",
+    icon: ClipboardList,
+  },
+  {
+    name: "Manage Categories",
+    href: "/admin/categories",
+    icon: LayoutGrid,
+  },
+];
 
 export default function AdminNavBar() {
-    
-    return(
-        <nav aria-label="Admin navigation" className=" ml-auto flex shrink-0 items-center gap-2 sm:gap-4">
-            <ul className="flex items-center gap-1 text-[14px] font-sans leading-none text-black">
-                {adminNavlinks.map((link) => (
-                    <li key={link.name}>
-                        <Link href={link.href}>{link.name}</Link>
-                    </li>
-                ))}
-            </ul>
-        </nav>
-    )
+  const pathname = usePathname();
+
+  return (
+    <nav aria-label="Admin navigation">
+      <ul className="flex flex-wrap items-center justify-end gap-1 sm:gap-2">
+        {adminNavlinks.map((link) => {
+          const Icon = link.icon;
+          const isActive = pathname === link.href;
+
+          return (
+            <li key={link.name}>
+              <Link
+                href={link.href}
+                className={`flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm font-medium transition-colors ${
+                  isActive
+                    ? "text-[#F53E32]"
+                    : "text-zinc-700 hover:text-[#F53E32]"
+                }`}
+              >
+                <Icon className="size-5 shrink-0" strokeWidth={1.8} aria-hidden="true" />
+                <span className="whitespace-nowrap">{link.name}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
 }

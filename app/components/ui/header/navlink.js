@@ -8,21 +8,14 @@ import { useIsAdmin } from "../../../hooks/useIsAdmin";
 
 export default function Navlinks() {
   const isAdmin = useIsAdmin();
-  return(
-    <>
-    {isAdmin ? <AdminNavBar /> : 
-    
-    <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-4">
-        <Profile/>
-          <Wishlist />
-          <Cart />
+  return isAdmin ? (
+    <AdminNavBar />
+  ) : (
+    <div className="flex items-center gap-2 sm:gap-4">
+      <Profile />
+      <Wishlist />
+      <Cart />
     </div>
-    
-    
-    }
-    
-    
-    </>
-  )
+  );
   
 }
