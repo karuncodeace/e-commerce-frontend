@@ -1,9 +1,7 @@
 import Logo from "./header/logo";
+
+import HeaderSearchBar from "./header/header-search-bar";
 import Navlinks from "./header/navlink";
-import SearchBar from "./header/search-bar";
-import Profile from "./header/profile";
-import Wishlist from "./header/wishlist";
-import Cart from "./header/cart";
 
 export default function Header() {
   return (
@@ -13,14 +11,10 @@ export default function Header() {
           <Logo />
         </div>
 
-        <div className="hidden min-w-0 flex-1 justify-center px-4 lg:flex">
-          <SearchBar />
-        </div>
+        <HeaderSearchBar />
 
-        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-4">
-          <Profile />
-          <Wishlist />
-          <Cart />
+        <div className="">
+          <Navlinks />
         </div>
       </div>
 
